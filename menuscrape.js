@@ -4,6 +4,8 @@ var request = require('request');
 var cheerio = require('cheerio');
 var app = express();
 var http = require('http');
+var Parser = require("simple-text-parser"),
+	parser = new Parser();
 
 app.get('/scrape', function(req, res){
 
@@ -26,7 +28,7 @@ app.get('/scrape', function(req, res){
 			var menu;
 			var json = {menu: ""};
 
-			//use unique h2 tag as a starting point
+						//use unique h2 tag as a starting point
 			//tbody.html and then parse everything because hacky
 			$('.contentpaneopen').filter(function() {
 				//store data that is being filtered into a variable
@@ -35,9 +37,11 @@ app.get('/scrape', function(req, res){
 
 				//use jQuery to get the text
 				menu = data.children().first().text();
-
+				console.log(menu);
 				//story date into json object
 				json.menu = menu;
+
+
 			});
 		}
 
@@ -46,8 +50,8 @@ app.get('/scrape', function(req, res){
 		//param 2 JSON.stringify(json, null, 4) data to write
 		//param 3: callback function, let us know status of function
 
-		var menuString = JSON.stringify(json, null, 4);
-		console.log(menuString);
+		//var menuString = JSON.stringify(json, null, 4);
+		//console.log(menuString);
 		// fs.writeText('output.json', JSON.stringify(json, null, 4), function(err){
 		// 	console.log('File written! check project directory for output.json file');
 		// })
