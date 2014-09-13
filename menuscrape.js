@@ -26,18 +26,71 @@ app.get('/scrape', function(req, res){
 			var menu;
 			var json = {menu: ""};
 
+			var i = 0;
 			//use unique h2 tag as a starting point
 			//tbody.html and then parse everything because hacky
-			$('.contentpaneopen').filter(function() {
+			$('table.contentpaneopen').filter(function() {
 				//store data that is being filtered into a variable
+				if (i == 0) {
+					i++;
+				} else {
 
-				var data = $(this);
+					var data = $(this);
 
-				//use jQuery to get the text
-				menu = data.children().first().text();
+					//use jQuery to get the text
+					menu = data.children().first().text();
+					// console.log(menu);
 
-				//story date into json object
-				json.menu = menu;
+					// create an array to represent the entire menu
+					var menuarray = menu.split('\n');
+
+					// go through each item in the menu array and cut it off before the first '-' to shorten the text.
+					for (var i = 0; i < menuarray.length; i++) {
+						var menuItem = menuarray[i];
+						var splitMenu = menuItem.split("-");
+						menuarray[i] = splitMenu[0];
+					}
+
+					// get rid of everything after the first parenthesis
+					// i got lazy so i just copied teh previous thing and changed the symbol
+					for (var i = 0; i < menuarray.length; i++) {
+						var menuItem = menuarray[i];
+						var splitMenu = menuItem.split("(");
+						menuarray[i] = splitMenu[0];
+
+						menuarray[i].trim();
+						menuarray[i].replace(/^\+|\s+$/gm,'');
+					}
+
+
+					var menuString = "";
+					for (var i = 0; i < menuarray.length; i++) {
+						menuString += menuarray[i] + '\n';
+					}
+
+					menuString = menuString.trim();
+
+					// split the menu into lunch and dinner
+					var lunchAndDinner = menuString.split("DINNER");
+
+					var lunchAndBreakfastString = lunchAndDinner[0];
+					var lunchAndBreakfast = lunchAndBreakfastString.split("LUNCH");
+
+					var dinner = lunchAndDinner[1];
+					var lunch = lunchAndBreakfast[1];
+					var breakfast = lunchAndBreakfast[0];
+
+					var menuAsJSON = {
+						"breakfast": breakfast,
+						"lunch"	   : lunch,
+						"dinner"   : dinner
+					}
+
+					console.log(menuAsJSON);
+
+					//story date into json object
+					json.menu = menu;
+				}
 			});
 		}
 
@@ -47,7 +100,7 @@ app.get('/scrape', function(req, res){
 		//param 3: callback function, let us know status of function
 
 		var menuString = JSON.stringify(json, null, 4);
-		console.log(menuString);
+		// console.log(menuString);
 		// fs.writeText('output.json', JSON.stringify(json, null, 4), function(err){
 		// 	console.log('File written! check project directory for output.json file');
 		// })
@@ -59,7 +112,7 @@ app.get('/scrape', function(req, res){
 
 app.listen(8081)
 
-console.log('See port 8081');
+console.log('See port 8081 \n');
 
 exports = module.exports = app;
 
