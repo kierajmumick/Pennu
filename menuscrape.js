@@ -5,7 +5,7 @@ var cheerio = require('cheerio');
 var app = express();
 var http = require('http');
 
-app.get('/', function(req, res){
+app.get('/commons', function(req, res){
 
 	//Web scraping stuff
 
@@ -111,6 +111,13 @@ app.get('/', function(req, res){
 		res.send(finalResponse);
 	})
 })
+
+app.get('/hill', function(req, res){
+}
+
+app.get('/kc', function(req, res){
+}
+
 
 app.listen(8081)
 
