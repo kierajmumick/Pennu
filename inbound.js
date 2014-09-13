@@ -2,6 +2,8 @@ var Twilio = require('twilio');
 var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
+var http = require('http');
+var httpRequest = require('request');
 
 var bodyParser = require('body-parser');
 
@@ -11,6 +13,7 @@ app.post('/', function(request, response) {
 
 	var diningHall = request.body.Body;
 	var resp = new Twilio.TwimlResponse();
+    response.writeHead(200, {'Content-type': 'text/xml'});
 	var date = new Date();
 	var dateString = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
 	switch (diningHall.toLowerCase()) {
@@ -18,13 +21,25 @@ app.post('/', function(request, response) {
 			resp.message("Hill's menu for " + dateString);
 			break;
 		case "commons":
-			resp.message("This is Commons's menu" + dateString);
+            // $.get("http://56ee6e67.ngrok.com/", function(res) {
+            //     console.log(res);
+            // });
+
+            httpRequest("http://56ee6e67.ngrok.com/", function(err, res, body) {
+                if (!err) {
+                    var meals = JSON.parse(body);
+
+                    var resp = new Twilio.TwimlResponse();
+                    resp.message("Commons's menu, " + dateString + "\n" + meals.dinner);
+                    response.end(resp.toString());
+                }
+            })
 			break;
 		case "kc":
-			resp.message("This is Kings Court's menu" + dateString);
+			resp.message("This is Kings Court's menu " + dateString);
 			break;
 		case "kings court":
-			resp.message("This is Kings Court's menu" + dateString);
+			resp.message("This is Kings Court's menu " + dateString);
 		case "hours":
 			resp.message(diningHoursByDate());
 			break;
@@ -33,9 +48,7 @@ app.post('/', function(request, response) {
 			break;
 	}
 
-	response.writeHead(200, {'Content-type': 'text/xml'});
 
-	response.end(resp.toString());
 })
 
 app.listen(1337);
@@ -88,3 +101,5 @@ function diningHoursByDate() {
     }
 
 }
+
+

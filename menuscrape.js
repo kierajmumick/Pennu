@@ -5,7 +5,7 @@ var cheerio = require('cheerio');
 var app = express();
 var http = require('http');
 
-app.get('/scrape', function(req, res){
+app.get('/', function(req, res){
 
 	//Web scraping stuff
 
@@ -16,6 +16,7 @@ app.get('/scrape', function(req, res){
 	//first param is URL
 	//callback funct takes 3 params: error, response status code and html
 	request(url, function(error, response, html){
+		var finalResponse;
 
 		//check for errors in request
 		if (!error) {
@@ -87,6 +88,7 @@ app.get('/scrape', function(req, res){
 					}
 
 					console.log(menuAsJSON);
+					finalResponse = menuAsJSON;
 
 					//story date into json object
 					json.menu = menu;
@@ -106,7 +108,7 @@ app.get('/scrape', function(req, res){
 		// })
 
 		//message reminding us that app doesn't have UI
-		res.send('Check console')
+		res.send(finalResponse);
 	})
 })
 
