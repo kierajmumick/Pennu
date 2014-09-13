@@ -18,14 +18,19 @@ app.post('/', function(request, response) {
 	var dateString = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
 	switch (diningHall.toLowerCase()) {
 		case "hill":
-			resp.message("Hill's menu for " + dateString);
+			httpRequest("http://37440b7e.ngrok.com/hill", function(err, res, body) {
+                if (!err) {
+                    var meals = JSON.parse(body);
+
+                    var resp = new Twilio.TwimlResponse();
+                    resp.message("Hill's menu, " + dateString + "\n" + meals.dinner);
+                    console.log(meals.lunch);
+                    response.end(resp.toString());
+                }
+            })
 			break;
 		case "commons":
-            // $.get("http://56ee6e67.ngrok.com/", function(res) {
-            //     console.log(res);
-            // });
-
-            httpRequest("http://56ee6e67.ngrok.com/", function(err, res, body) {
+            httpRequest("http://37440b7e.ngrok.com/commons", function(err, res, body) {
                 if (!err) {
                     var meals = JSON.parse(body);
 
@@ -36,12 +41,34 @@ app.post('/', function(request, response) {
             })
 			break;
 		case "kc":
-			resp.message("This is Kings Court's menu " + dateString);
+            httpRequest("http://37440b7e.ngrok.com/kc", function(err, res, body) {
+                if (!err) {
+                    var meals = JSON.parse(body);
+
+                    var resp = new Twilio.TwimlResponse();
+                    resp.message("Kings Court's menu, " + dateString + "\n" + meals.dinner);
+                    response.end(resp.toString());
+                }
+            })
 			break;
 		case "kings court":
-			resp.message("This is Kings Court's menu " + dateString);
+            httpRequest("http://37440b7e.ngrok.com/kc", function(err, res, body) {
+                if (!err) {
+                    var meals = JSON.parse(body);
+
+                    var resp = new Twilio.TwimlResponse();
+                    if (meals.dinner == undefined) resp.message("Kings Court is closed today");
+                    else resp.message("Kings Court's menu, " + dateString + "\n" + meals.dinner);
+                    if (resp.toString() == "undefined") {
+                        response.end("Closed");
+                    } else {
+                        response.end(resp.toString());
+                    }
+                }
+            })
 		case "hours":
 			resp.message(diningHoursByDate());
+            response.end(resp.toString());
 			break;
 		default:
 			resp.message("Invalid! For Menus, reply with \"Hill\", \"Commons\", or \"KC\". For Hours, reply with \"Hours\"");
