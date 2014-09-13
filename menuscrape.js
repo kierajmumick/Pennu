@@ -185,7 +185,7 @@ app.get('/hill', function(req, res){
 					var lunchAndDinner = menuString.split("DINNER");
 
 					var lunchAndBreakfastString = lunchAndDinner[0];
-					var lunchAndBreakfast = lunchAndBreakfastString.split("LUNCH");
+					var lunchAndBreakfast = lunchAndBreakfastString.split("UNCH");
 
 					var dinner = lunchAndDinner[1];
 					var lunch = lunchAndBreakfast[1];

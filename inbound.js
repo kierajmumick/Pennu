@@ -29,7 +29,7 @@ app.post('/', function(request, response) {
 
                     //return breakfast, lunch, or dinner based on hour
                     if (date.getDay() == 0 || date.getDay() == 6) {
-                        if (hours > 10 && hours < 16) {
+                        if (hour > 10 && hour < 16) {
                             currentMeal = meals.lunch;
                         } else {
                             currentMeal = meals.dinner;
@@ -60,7 +60,7 @@ app.post('/', function(request, response) {
 
                     //return breakfast, lunch, or dinner based on hour
                     if (date.getDay() == 0 || date.getDay() == 6) {
-                        if (hours > 10 && hours < 16) {
+                        if (hour > 10 && hour < 16) {
                             currentMeal = meals.lunch;
                         } else {
                             currentMeal = meals.dinner;
@@ -89,7 +89,7 @@ app.post('/', function(request, response) {
 
                     //return breakfast, lunch, or dinner based on hour
                     if (date.getDay() == 0 || date.getDay() == 6) {
-                        if (hours > 10 && hours < 16) {
+                        if (hour > 10 && hour < 16) {
                             currentMeal = meals.lunch;
                         } else {
                             currentMeal = meals.dinner;
@@ -124,7 +124,7 @@ app.post('/', function(request, response) {
 
                     //return breakfast, lunch, or dinner based on hour
                     if (date.getDay() == 0 || date.getDay() == 6) {
-                        if (hours > 10 && hours < 16) {
+                        if (hour > 10 && hour < 16) {
                             currentMeal = meals.lunch;
                         } else {
                             currentMeal = meals.dinner;
