@@ -47,44 +47,44 @@ function diningHoursByDate() {
 
     var n = new Date().getDay();
     if(n===0){ //Sunday
-        return "Today is Sunday. \n 1920 COMMONS \n Brunch: 11 am - 3 pm \n Dinner: 5 pm - 8 pm \n HILL \n Brunch: " + "11 am - 3 pm" + "\n" + "Dinner: " + "5 pm - 8 pm" + "\n" + "Express: " + "8 pm - 12 am" +
-        "\n" + "KINGS COURT" + "\n" + "Closed on weekends."; //Sunday is good
+        return "Today is Sunday. \n \n 1920 COMMONS \n Brunch: 11 am - 3 pm \n Dinner: 5 pm - 8 pm \n \n HILL \n Brunch: " + "11 am - 3 pm" + "\n" + "Dinner: " + "5 pm - 8 pm" + "\n" + "Express: " + "8 pm - 12 am" +
+        "\n \n" + "KINGS COURT" + "\n" + "Closed on weekends."; //Sunday is good
     }
     else if(n==1){ //Monday
-        return "Today is Monday." + "\n" +
+        return "Today is Monday." + "\n \n" +
         "1920 COMMONS" + "\n" + "Lunch: " + "11 am - 2 pm" + "\n" + "Dinner: " + "5 pm - 9 pm" +
-        "\n" + "HILL" + "\n" + "Breakfast: " + "7:30 am - 10 am" + "\n" + "Light Breakfast: " + "10 am - 11 am" + "\n" + "Lunch: " + "11 am - 2 pm" + "\n" + "Light Lunch: " + "2 pm - 5 pm" + "\n" + "Dinner: " + "5 pm - 8 pm" + "\n" + "Express: " + "8 pm - 12 am" + 
-        "\n" + "KINGS COURT" + "\n" + "Breakfast: " + "8:30 am - 10:30 am" + "\n" + "Lunch: " + "11 am - 2 pm" + "\n" + "Dinner: " + "5 pm - 8 pm"; //Mon - Thurs good
+        "\n \n " + "HILL" + "\n" + "Breakfast: " + "7:30 am - 10 am" + "\n" + "Light Breakfast: " + "10 am - 11 am" + "\n" + "Lunch: " + "11 am - 2 pm" + "\n" + "Light Lunch: " + "2 pm - 5 pm" + "\n" + "Dinner: " + "5 pm - 8 pm" + "\n" + "Express: " + "8 pm - 12 am" + 
+        "\n \n" + "KINGS COURT" + "\n" + "Breakfast: " + "8:30 am - 10:30 am" + "\n" + "Lunch: " + "11 am - 2 pm" + "\n" + "Dinner: " + "5 pm - 8 pm"; //Mon - Thurs good
     }
     else if (n==2){ //Tuesday
-        return "Today is Tuesday." + "\n" +
+        return "Today is Tuesday." + "\n \n" +
         "1920 COMMONS" + "\n" + "Lunch: " + "11 am - 2 pm" + "\n" + "Dinner: " + "5 pm - 9 pm" +
-        "\n" + "HILL" + "\n" + "Breakfast: " + "7:30 am - 10 am" + "\n" + "Light Breakfast: " + "10 am - 11 am" + "\n" + "Lunch: " + "11 am - 2 pm" + "\n" + "Light Lunch: " + "2 pm - 5 pm" + "\n" + "Dinner: " + "5 pm - 8 pm" + "\n" + "Express: " + "8 pm - 12 am" + 
-        "\n" + "KINGS COURT" + "\n" + "Breakfast: " + "8:30 am - 10:30 am" + "\n" + "Lunch: " + "11 am - 2 pm" + "\n" + "Dinner: " + "5 pm - 8 pm"; //Mon - Thurs good
+        "\n \n" + "HILL" + "\n" + "Breakfast: " + "7:30 am - 10 am" + "\n" + "Light Breakfast: " + "10 am - 11 am" + "\n" + "Lunch: " + "11 am - 2 pm" + "\n" + "Light Lunch: " + "2 pm - 5 pm" + "\n" + "Dinner: " + "5 pm - 8 pm" + "\n" + "Express: " + "8 pm - 12 am" + 
+        "\n \n" + "KINGS COURT" + "\n" + "Breakfast: " + "8:30 am - 10:30 am" + "\n" + "Lunch: " + "11 am - 2 pm" + "\n" + "Dinner: " + "5 pm - 8 pm"; //Mon - Thurs good
     }
     else if (n==3){ //Wednesday
-        return "Today is Wednesday." + "\n" +
+        return "Today is Wednesday." + "\n \n" +
         "1920 COMMONS" + "\n" + "Lunch: " + "11 am - 2 pm" + "\n" + "Dinner: " + "5 pm - 9 pm" +
-        "\n" + "HILL" + "\n" + "Breakfast: " + "7:30 am - 10 am" + "\n" + "Light Breakfast: " + "10 am - 11 am" + "\n" + "Lunch: " + "11 am - 2 pm" + "\n" + "Light Lunch: " + "2 pm - 5 pm" + "\n" + "Dinner: " + "5 pm - 8 pm" + "\n" + "Express: " + "8 pm - 12 am" + 
-        "\n" + "KINGS COURT" + "\n" + "Breakfast: " + "8:30 am - 10:30 am" + "\n" + "Lunch: " + "11 am - 2 pm" + "\n" + "Dinner: " + "5 pm - 8 pm"; //Mon - Thurs good
+        "\n \n" + "HILL" + "\n" + "Breakfast: " + "7:30 am - 10 am" + "\n" + "Light Breakfast: " + "10 am - 11 am" + "\n" + "Lunch: " + "11 am - 2 pm" + "\n" + "Light Lunch: " + "2 pm - 5 pm" + "\n" + "Dinner: " + "5 pm - 8 pm" + "\n" + "Express: " + "8 pm - 12 am" + 
+        "\n \n" + "KINGS COURT" + "\n" + "Breakfast: " + "8:30 am - 10:30 am" + "\n" + "Lunch: " + "11 am - 2 pm" + "\n" + "Dinner: " + "5 pm - 8 pm"; //Mon - Thurs good
     }
     else if (n==4){ //Thursday
-        return "Today is Thursday." + "\n" +
+        return "Today is Thursday." + "\n \n" +
         "1920 COMMONS" + "\n" + "Lunch: " + "11 am - 2 pm" + "\n" + "Dinner: " + "5 pm - 9 pm" +
-        "\n" + "HILL" + "\n" + "Breakfast: " + "7:30 am - 10 am" + "\n" + "Light Breakfast: " + "10 am - 11 am" + "\n" + "Lunch: " + "11 am - 2 pm" + "\n" + "Light Lunch: " + "2 pm - 5 pm" + "\n" + "Dinner: " + "5 pm - 8 pm" + "\n" + "Express: " + "8 pm - 12 am" + 
-        "\n" + "KINGS COURT" + "\n" + "Breakfast: " + "8:30 am - 10:30 am" + "\n" + "Lunch: " + "11 am - 2 pm" + "\n" + "Dinner: " + "5 pm - 8 pm"; //Mon - Thurs good
+        "\n \n" + "HILL" + "\n" + "Breakfast: " + "7:30 am - 10 am" + "\n" + "Light Breakfast: " + "10 am - 11 am" + "\n" + "Lunch: " + "11 am - 2 pm" + "\n" + "Light Lunch: " + "2 pm - 5 pm" + "\n" + "Dinner: " + "5 pm - 8 pm" + "\n" + "Express: " + "8 pm - 12 am" + 
+        "\n \n" + "KINGS COURT" + "\n" + "Breakfast: " + "8:30 am - 10:30 am" + "\n" + "Lunch: " + "11 am - 2 pm" + "\n" + "Dinner: " + "5 pm - 8 pm"; //Mon - Thurs good
     }
     else if(n==5){ //Friday
-        return "Today is Friday." + "\n" +
+        return "Today is Friday." + "\n \n" +
         "1920 COMMONS" + "\n" + "Lunch: " + "11 am - 2 pm" + "\n" + "Dinner: " + "5 pm - 7:30 pm" +
-        "\n" + "HILL" + "\n" + "Breakfast: " + "7:30 am - 10 am" + "\n" + "Light Breakfast: " + "10 am - 11 am" + "\n" + "Lunch: " + "11 am - 2 pm" + "\n" + "Light Lunch: " + "2 pm - 5 pm" + "\n" + "Dinner: " + "5 pm - 7 pm" +
-        "\n" + "KINGS COURT" + "\n" + "Breakfast: " + "8:30 am - 10:30 am" + "\n" + "Lunch: " + "11 am - 2 pm" + "\n" + "Dinner: " + "5 pm - 8 pm"; //Mon - Thurs good
+        "\n \n" + "HILL" + "\n" + "Breakfast: " + "7:30 am - 10 am" + "\n" + "Light Breakfast: " + "10 am - 11 am" + "\n" + "Lunch: " + "11 am - 2 pm" + "\n" + "Light Lunch: " + "2 pm - 5 pm" + "\n" + "Dinner: " + "5 pm - 7 pm" +
+        "\n \n" + "KINGS COURT" + "\n" + "Breakfast: " + "8:30 am - 10:30 am" + "\n" + "Lunch: " + "11 am - 2 pm" + "\n" + "Dinner: " + "5 pm - 8 pm"; //Mon - Thurs good
     }
     else{ //Saturday
-        return "Today is Saturday." + "\n" +
+        return "Today is Saturday." + "\n \n" +
         "1920 COMMONS" + "\n" + "Brunch: " + "11 am - 3 pm" + "\n" + "Dinner: " + "5 pm - 7 pm" +
-        "\n" + "HILL" + "\n" + "Brunch: " + "11 am - 3 pm" + "\n" + "Dinner: " + "5 pm - 7 pm" +
-        "\n" + "KINGS COURT" + "\n" + "Closed on weekends."; //Saturday good
+        "\n \n" + "HILL" + "\n" + "Brunch: " + "11 am - 3 pm" + "\n" + "Dinner: " + "5 pm - 7 pm" +
+        "\n \n" + "KINGS COURT" + "\n" + "Closed on weekends."; //Saturday good
     }
 
 }
