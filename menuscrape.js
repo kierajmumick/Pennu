@@ -30,10 +30,9 @@ app.get('/commons', function(req, res){
 			var menu;
 			var json = {menu: ""};
 
-			//use unique h2 tag as a starting point
+			
 			var i = 0;
-			//use unique h2 tag as a starting point
-			//tbody.html and then parse everything because hacky
+			//scrape from table contentpane
 			$('table.contentpaneopen').filter(function() {
 				//store data that is being filtered into a variable
 				if (i == 0) {
@@ -109,13 +108,13 @@ app.get('/commons', function(req, res){
 		res.send(finalResponse);
 	})
 //I ADDED A SEMI COLON HERE, SHOULD IT BE HERE? See for potential errors
-});
+});	
 
 //HILL
 app.get('/hill', function(req, res){
 		//Web scraping stuff
 
-	//The URL for 1920 Commons
+	//The URL for hill Commons
 	url = 'http://cms.business-services.upenn.edu/dining/hours-locations-a-menus/residential-dining/hill-house/daily-menu.html';
 
 	//structure of request call
@@ -133,10 +132,9 @@ app.get('/hill', function(req, res){
 			var menu;
 			var json = {menu: ""};
 
-			//use unique h2 tag as a starting point
+			
 			var i = 0;
-			//use unique h2 tag as a starting point
-			//tbody.html and then parse everything because hacky
+			//scrape from table contentpane
 			$('table.contentpaneopen').filter(function() {
 				//store data that is being filtered into a variable
 				if (i == 0) {
@@ -218,7 +216,7 @@ app.get('/hill', function(req, res){
 app.get('/kc', function(req, res){
 			//Web scraping stuff
 
-	//The URL for 1920 Commons
+	//The URL for KC
 	url = 'http://cms.business-services.upenn.edu/dining/hours-locations-a-menus/residential-dining/english-house/daily-menu.html';
 
 	//structure of request call
@@ -236,10 +234,8 @@ app.get('/kc', function(req, res){
 			var menu;
 			var json = {menu: ""};
 
-			//use unique h2 tag as a starting point
 			var i = 0;
-			//use unique h2 tag as a starting point
-			//tbody.html and then parse everything because hacky
+			//scrape from table contentpane
 			$('table.contentpaneopen').filter(function() {
 				//store data that is being filtered into a variable
 				if (i == 0) {

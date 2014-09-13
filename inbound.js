@@ -16,14 +16,37 @@ app.post('/', function(request, response) {
     response.writeHead(200, {'Content-type': 'text/xml'});
 	var date = new Date();
 	var dateString = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
+
+    
+    var hour = date.getHours(); 
+
 	switch (diningHall.toLowerCase()) {
 		case "hill":
 			httpRequest("http://37440b7e.ngrok.com/hill", function(err, res, body) {
                 if (!err) {
                     var meals = JSON.parse(body);
+                    var currentMeal;
+
+                    //return breakfast, lunch, or dinner based on hour
+                    if (date.getDay() == 0 || date.getDay() == 6) {
+                        if (hours > 10 && hours < 16) {
+                            currentMeal = meals.lunch;
+                        } else {
+                            currentMeal = meals.dinner;
+                        }
+                    } else {
+                        if (hour > 0 && hour < 12) {
+                            currentMeal = meals.breakfast;
+                        } else if (hour > 11 && hour < 15) {
+                            currentMeal = meals.lunch;
+                        } else {
+                            currentMeal = meals.dinner;
+                        }
+                    }
+                        
 
                     var resp = new Twilio.TwimlResponse();
-                    resp.message("Hill's menu, " + dateString + "\n" + meals.dinner);
+                    resp.message("Hill's menu, " + dateString + "\n" + currentMeal);
                     console.log(meals.lunch);
                     response.end(resp.toString());
                 }
@@ -33,9 +56,27 @@ app.post('/', function(request, response) {
             httpRequest("http://37440b7e.ngrok.com/commons", function(err, res, body) {
                 if (!err) {
                     var meals = JSON.parse(body);
+                    var currentMeal;
+
+                    //return breakfast, lunch, or dinner based on hour
+                    if (date.getDay() == 0 || date.getDay() == 6) {
+                        if (hours > 10 && hours < 16) {
+                            currentMeal = meals.lunch;
+                        } else {
+                            currentMeal = meals.dinner;
+                        }
+                    } else {
+                        if (hour > 0 && hour < 12) {
+                            currentMeal = meals.breakfast;
+                        } else if (hour > 11 && hour < 15) {
+                            currentMeal = meals.lunch;
+                        } else {
+                            currentMeal = meals.dinner;
+                        }
+                    }
 
                     var resp = new Twilio.TwimlResponse();
-                    resp.message("Commons's menu, " + dateString + "\n" + meals.dinner);
+                    resp.message("Commons's menu, " + dateString + "\n" + currentMeal);
                     response.end(resp.toString());
                 }
             })
@@ -44,10 +85,34 @@ app.post('/', function(request, response) {
             httpRequest("http://37440b7e.ngrok.com/kc", function(err, res, body) {
                 if (!err) {
                     var meals = JSON.parse(body);
+                    var currentMeal;
 
+                    //return breakfast, lunch, or dinner based on hour
+                    if (date.getDay() == 0 || date.getDay() == 6) {
+                        if (hours > 10 && hours < 16) {
+                            currentMeal = meals.lunch;
+                        } else {
+                            currentMeal = meals.dinner;
+                        }
+                    } else {
+                        if (hour > 0 && hour < 12) {
+                            currentMeal = meals.breakfast;
+                        } else if (hour > 11 && hour < 15) {
+                            currentMeal = meals.lunch;
+                        } else {
+                            currentMeal = meals.dinner;
+                        }
+                    }
+
+                    //if closed
                     var resp = new Twilio.TwimlResponse();
-                    resp.message("Kings Court's menu, " + dateString + "\n" + meals.dinner);
-                    response.end(resp.toString());
+                    if (currentMeal == undefined) resp.message("Kings Court is closed today");
+                    else resp.message("Kings Court's menu, " + dateString + "\n" + currentMeal);
+                    if (resp.toString() == "undefined") {
+                        response.end("Closed");
+                    } else {
+                        response.end(resp.toString());
+                    }
                 }
             })
 			break;
@@ -55,10 +120,29 @@ app.post('/', function(request, response) {
             httpRequest("http://37440b7e.ngrok.com/kc", function(err, res, body) {
                 if (!err) {
                     var meals = JSON.parse(body);
+                    var currentMeal;
 
+                    //return breakfast, lunch, or dinner based on hour
+                    if (date.getDay() == 0 || date.getDay() == 6) {
+                        if (hours > 10 && hours < 16) {
+                            currentMeal = meals.lunch;
+                        } else {
+                            currentMeal = meals.dinner;
+                        }
+                    } else {
+                        if (hour > 0 && hour < 12) {
+                            currentMeal = meals.breakfast;
+                        } else if (hour > 11 && hour < 15) {
+                            currentMeal = meals.lunch;
+                        } else {
+                            currentMeal = meals.dinner;
+                        }
+                    }
+
+                    //if closed
                     var resp = new Twilio.TwimlResponse();
-                    if (meals.dinner == undefined) resp.message("Kings Court is closed today");
-                    else resp.message("Kings Court's menu, " + dateString + "\n" + meals.dinner);
+                    if (currentMeal == undefined) resp.message("Kings Court is closed today");
+                    else resp.message("Kings Court's menu, " + dateString + "\n" + currentMeal);
                     if (resp.toString() == "undefined") {
                         response.end("Closed");
                     } else {
